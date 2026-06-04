@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+<style>
+    :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #181825;
+            --bg-card-hover: #1e1e2e;
+            --accent: #c084fc;
+            --accent-glow: rgba(192, 132, 252, 0.4);
+            --accent2: #38bdf8;
+            --accent2-glow: rgba(56, 189, 248, 0.4);
+            --accent3: #f472b6;
+            --accent3-glow: rgba(244, 114, 182, 0.4);
+            --accent4: #4ade80;
+            --accent4-glow: rgba(74, 222, 128, 0.4);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --border-hover: #334155;
+            --online: #22c55e;
+            --offline: #ef4444;
+            --maintenance: #f59e0b;
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        
+        .navbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            
+        }
+         .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .game-icon {
+            font-size: 3.5rem;
+        }
+
+        .game-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .game-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .game-status {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--online);
+        }
+
+        
+        @media (max-width: 600px) {
+            .navbar {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .game-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                padding: 0 12px 40px;
+            }
+
+            .game-card {
+                padding: 20px 12px;
+            }
+
+            .game-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Game<span>Hub</span></a>
+        <ul class="nav-links">
+            <li><a href="Minecraft.html">Minecraft</a></li>
+            <li><a href="Pontus.html">Pontus</a></li>
+            <li><a href="Shlattmas.html">Shlattmas</a></li>
+            <li><a href="snakes.html">Snakes</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Choose a Game</h1>
+    </section>
+     <div class="game-grid">
+        <a href="Minecraft.html" class="game-card">
+            <div class="game-name">Minecraft</div>
+            <div class="game-desc">Survival & building</div>
+        </a>
+        <a href="Pontus.html" class="game-card">
+            <div class="game-name">Pontus</div>
+            <div class="game-desc">Epic adventure to find the treasure</div>
+        </a>
+        <a href="Shlattmas.html" class="game-card">
+            <div class="game-name">Shlattmas</div>
+            <div class="game-desc">Peak</div>
+        </a>
+        <a href="snakes.html" class="game-card">
+            <div class="game-name">Snakes</div>
+            <div class="game-desc">Classic arcade</div>
+        </a>
+    </div>
+
+</body>
+</html>
