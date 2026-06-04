@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,5 +31,85 @@
     <img src="pin.png" class="pin">
     <h4 class="msg">found him!</h4>
 
+=======
+<html>
+<head>
+  <title>Pontus Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+ 
+    #startScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+ 
+      background: #111;
+      color: white;
+ 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+ 
+      font-size: larger;
+ 
+      z-index: 1000;
+      gap: 20px;
+    }
+ 
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+ 
+<div id="startScreen">
+  <h1>Where is Pontus Karsten right now?</h1>
+  <p>(Ever wondered, where is he? Where is my knight in shining armor?)</p>
+  <button onclick="startMap()">Find out</button>
+</div>
+ 
+<div id="map"></div>
+ 
+<script>
+  var map = L.map('map').setView([55.610878, 13.001967], 13); // Malmö
+ 
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+ 
+  L.marker([55.610878, 13.001967]).addTo(map)
+    .bindPopup('Pontus is here right now!')
+    .openPopup();
+ 
+  map.on('tileloadstart', function (e) {
+  console.log("Tile requested:", e.tile.src);
+    });
+    
+  function startMap() {
+    document.getElementById('startScreen').style.display = 'none';
+ 
+    // Fix map rendering issue after showing
+    map.invalidateSize();
+  }
+</script>
+ 
+>>>>>>> 459d583a7941a7cc28ebae7c03106a802aa9c47a
 </body>
 </html>
