@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Pontus Tracker</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
+  <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
   <style>
     html, body {
       height: 100%;
@@ -59,8 +61,12 @@
 <script>
   var map = L.map('map').setView([55.610878, 13.001967], 13); // Malmö
  
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
- 
+  //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map); //replace with dir/tiles/png
+  L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+    minZoom: 10,
+    maxZoom: 15
+    }).addTo(map);
+
   L.marker([55.610878, 13.001967]).addTo(map)
     .bindPopup('Pontus is here right now!')
     .openPopup();
